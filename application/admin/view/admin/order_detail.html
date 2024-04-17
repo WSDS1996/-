@@ -1,0 +1,52 @@
+{extend name="/common/base" /}
+{block name="bady"}
+
+<section class="rt_wrap content mCustomScrollbar">
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">订单详情示例</h2>
+        </div>
+        {volist name="order_detail" id="list"}
+        <table class="table">
+            <tr>
+                <td>收件人：{$list.name}</td>
+                <td>联系电话：{$list.phone}</td>
+                <td>收件地址：{$list.address}</td>
+                <td>付款时间：{$list.update_time}</td>
+            </tr>
+            <tr>
+                <td>订单状态：<a>已付款</a></td>
+                <td colspan="3">订单总价：<mark><strong>￥{$list.cost}</strong></mark></td>
+            </tr>
+        </table>
+        {/volist}
+        <table class="table">
+            {volist name="order" id="good"}
+            <tr>
+                <td class="center"><img src={$good.pic_url} width="50" height="50"/></td>
+                <td>{$good.pic_desc}</td>
+                <td class="center">{$good.product_id}</td>
+                <td class="center"><strong class="rmb_icon">{$good.cost}</strong></td>
+                <td class="center">
+                    <p>优惠卷：无</p>
+                    <p>红包：无</p>
+                </td>
+                <td class="center"><strong>{$good.num}</strong></td>
+                <td class="center"><strong class="rmb_icon">{$good.cost*$good.num}</strong></td>
+                <td class="center">本</td>
+            </tr>
+            {/volist}
+        </table>
+        <aside class="mtb" style="text-align:right;">
+            <label>管理员操作：</label>
+            <input type="text" class="textbox textbox_295" placeholder="管理员操作备注"/>
+            <input type="button" value="打印订单" class="group_btn"/>
+            <input type="button" value="确认订单" class="group_btn"/>
+            <input type="button" value="付款" class="group_btn"/>
+            <input type="button" value="配货" class="group_btn"/>
+            <input type="button" value="发货" class="group_btn"/>
+            <input type="button" value="确认收货" class="group_btn"/>
+        </aside>
+    </div>
+</section>
+{/block}

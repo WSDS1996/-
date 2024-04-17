@@ -1,0 +1,50 @@
+{extend name="/common/base" /}
+{block name="bady"}
+<style>
+    #divcss5{margin:0 auto;border:1px solid #f4fcff;width:300px;height:100px}
+    ul.pagination {display: inline-block;padding: 20px;margin: 0;text-align: center}
+    .pagination a{text-decoration: none;margin-right: 0px!important; text-align: center}
+    ul.pagination li {display: inline;align-content: center}
+    .disabled ,.pagination  .active, .pagination li a {color: black; float: left;padding: 8px 16px;text-decoration: none;transition: background-color .3s;border: 1px solid #ddd; margin: 0 4px;}
+    .pagination .active{background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    .disabled{background-color: rgba(236, 236, 236, 0.78);}
+    ul.pagination  a.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+</style>
+
+<section class="rt_wrap content mCustomScrollbar">
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">订单列表示例</h2>
+        </div>
+        <table class="table">
+            <tr>
+                <th>订单编号</th>
+                <th>收件人</th>
+                <th>联系电话</th>
+                <th>收件人地址</th>
+                <th>订单金额</th>
+                <th>配送方式</th>
+                <th>操作</th>
+            </tr>
+            {volist name="order_list" id="list"}
+            <tr>
+                <td class="center">{$list.order_id}</td>
+                <td>{$list.name}</td>
+                <td>{$list.phone}</td>
+                <td>
+                    <address>{$list.address}</address>
+                </td>
+                <td class="center"><strong class="rmb_icon">{$list.cost}</strong></td>
+                <td class="center">顺丰快递</td>
+                <td class="center">
+                    <a href="/admin/admin/order_detail?id={$list.order_id}" title="查看订单" class="link_icon" target="_blank">&#118;</a>
+                    <a href="" title="删除" class="link_icon">&#100;</a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+        <div id="divcss5">{$order_list|raw}</div>
+    </div>
+</section>
+{/block}

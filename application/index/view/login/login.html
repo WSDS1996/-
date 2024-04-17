@@ -1,0 +1,567 @@
+{extend name="/common/base" /}
+{block name="bady"}
+
+<div class="banner">
+    <!--轮播 -->
+    <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
+        <ul class="am-slides">
+            <li class="banner1"><a href="introduction.html"><img src="/static/images/ad1.jpg" /></a></li>
+            <li class="banner2"><a><img src="/static/images/ad2.jpg" /></a></li>
+            <li class="banner3"><a><img src="/static/images/ad3.jpg" /></a></li>
+            <li class="banner4"><a><img src="/static/images/ad4.jpg" /></a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="shopNav">
+    <div class="slideall">
+
+        <div class="long-title"><span class="all-goods">全部分类</span></div>
+        <div class="nav-cont">
+            <ul>
+                <li class="index"><a href="#">首页</a></li>
+                <li class="qc"><a href="#">三国</a></li>
+                <li class="qc"><a href="#">水浒</a></li>
+                <li class="qc"><a href="#">红楼梦</a></li>
+                <li class="qc last"><a href="#">西游记</a></li>
+            </ul>
+            <div class="nav-extra">
+                <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>恭喜发财
+                <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+            </div>
+        </div>
+        <!--侧边导航 -->
+        <div id="nav" class="navfull">
+            <div class="area clearfix">
+                <div class="category-content" id="guide_2">
+
+                    <div class="category">
+                        <ul class="category-list" id="js_climit_li">
+                            <li class="appliance js_toggle relative first">
+                                <div id="book1"  class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="1" id="book11">图书/童书</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="图书">图书</span></dt>
+                                                        {volist name="good1" id="goodss"}
+                                                        <dd><a title="蒸蛋糕" href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="教辅/考试">教辅/考试</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="教辅">教辅</span></dt>
+                                                        {volist name="good2" id="goodss" offset="0" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="考试">考试</span></dt>
+                                                        {volist name="good2" id="goodss" offset="4" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="大中小学书籍">大中小学书籍</span></dt>
+                                                        {volist name="good2" id="goodss" offset="8" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good2" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="人文社科">人文社科</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="创新天地">创新天地</span></dt>
+                                                        {volist name="good3" id="goodss" offset="0" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="人与自然">牛肉丝</span></dt>
+                                                        {volist name="good3" id="goodss" offset="4" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="小香肠">无限未来</span></dt>
+                                                        {volist name="good3" id="goodss" offset="8" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good2" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="网络文学">网络文学</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                            <dt><span title="创新天地">创新天地</span></dt>
+                                                            {volist name="good4" id="goodss" offset="0" length='4'}
+                                                            <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                            {/volist}
+                                                        </dl>
+                                                        <dl class="dl-sort">
+                                                            <dt><span title="人与自然">人与自然</span></dt>
+                                                            {volist name="good4" id="goodss" offset="4" length='4'}
+                                                            <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                            {/volist}
+                                                        </dl>
+                                                        <dl class="dl-sort">
+                                                            <dt><span title="无限未来">无限未来</span></dt>
+                                                            {volist name="good4" id="goodss" offset="8" length='4'}
+                                                            <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                            {/volist}
+                                                        </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good2" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="文学名著">文学名著</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="创新天地">创新天地</span></dt>
+                                                        {volist name="good5" id="goodss" offset="0" length='6'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="人与自然">人与自然</span></dt>
+                                                        {volist name="good5" id="goodss" offset="6" length='5'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="无限未来">无限未来</span></dt>
+                                                        {volist name="good5" id="goodss" offset="11" length='5'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good2" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="英文书籍">英文书籍</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="创新天地">创新天地</span></dt>
+                                                        {volist name="good6" id="goodss" offset="0" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="人与自然">人与自然</span></dt>
+                                                        {volist name="good6" id="goodss" offset="4" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="无限未来">无限未来</span></dt>
+                                                        {volist name="good6" id="goodss" offset="8" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good2" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="计算机世界">计算机世界</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="创新天地">创新天地</span></dt>
+                                                        {volist name="good7" id="goodss" offset="0" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="人与自然">人与自然</span></dt>
+                                                        {volist name="good7" id="goodss" offset="4" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="无限未来">无限未来</span></dt>
+                                                        {volist name="good7" id="goodss" offset="8" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good7" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="哲学宗教">哲学宗教</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="创新天地">创新天地</span></dt>
+                                                        {volist name="good8" id="goodss" offset="0" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="人与自然">人与自然</span></dt>
+                                                        {volist name="good8" id="goodss" offset="4" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="无限未来">无限未来</span></dt>
+                                                        {volist name="good8" id="goodss" offset="8" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good8" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="电子产品">电子产品</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="创新天地">创新天地</span></dt>
+                                                        {volist name="good9" id="goodss" offset="0" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="人与自然">人与自然</span></dt>
+                                                        {volist name="good9" id="goodss" offset="4" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="无限未来">无限未来</span></dt>
+                                                        {volist name="good9" id="goodss" offset="8" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good9" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="appliance js_toggle relative last">
+                                <div class="category-info">
+                                    <h3 class="category-name b-category-name"><a class="ml-22" title="品牌服饰">品牌服饰</a></h3>
+                                    <em>&gt;</em></div>
+                                <div class="menu-item menu-in top">
+                                    <div class="area-in">
+                                        <div class="area-bg">
+                                            <div class="menu-srot">
+                                                <div class="sort-side">
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="创新天地">创新天地</span></dt>
+                                                        {volist name="good10" id="goodss" offset="0" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="人与自然">人与自然</span></dt>
+                                                        {volist name="good10" id="goodss" offset="4" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                    <dl class="dl-sort">
+                                                        <dt><span title="无限未来">无限未来</span></dt>
+                                                        {volist name="good10" id="goodss" offset="8" length='4'}
+                                                        <dd><a title={$goodss.product_name} href={$goodss.url}><span>{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                                <div class="brand-side">
+                                                    <dl class="dl-sort"><dt><span>热门图书</span></dt>
+                                                        {volist name="good10" id="goodss" offset="20" length='6'}
+                                                        <dd><a rel="nofollow" title={$goodss.product_name} target="_blank" href={$goodss.url} rel="nofollow"><span  class ="red" >{$goodss.product_name}</span></a></dd>
+                                                        {/volist}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--轮播-->
+
+        <script type="text/javascript">
+            (function() {
+                $('.am-slider').flexslider();
+            });
+            $(document).ready(function() {
+                $("li").hover(function() {
+                    $(".category-content .category-list li.first .menu-in").css("display", "none");
+                    $(".category-content .category-list li.first").removeClass("hover");
+                    $(this).addClass("hover");
+                    $(this).children("div.menu-in").css("display", "block")
+                }, function() {
+                    $(this).removeClass("hover")
+                    $(this).children("div.menu-in").css("display", "none")
+                });
+            })
+        </script>
+
+
+
+        <!--小导航 -->
+
+    <script type="text/javascript">
+        if ($(window).width() < 640) {
+            function autoScroll(obj) {
+                $(obj).find("ul").animate({
+                    marginTop: "-39px"
+                }, 500, function() {
+                    $(this).css({
+                        marginTop: "0px"
+                    }).find("li:first").appendTo(this);
+                })
+            }
+            $(function() {
+                setInterval('autoScroll(".demo")', 3000);
+            })
+        }
+    </script>
+</div>
+<div class="shopMainbg">
+    <div class="shopMain" id="shopmain">
+
+        <!--今日推荐 -->
+
+        <div class="am-g am-g-fixed recommendation">
+            <div class="clock am-u-sm-3" ">
+<!--            <img src="/static/images/2016.png "></img>-->
+            <p>今日<br>推荐</p>
+        </div>
+        {volist name="login" id="lists"  offset="6" length='3'}
+        <div class="am-u-sm-4 am-u-lg-3 ">
+            <div class="info ">
+                <h3>{$lists.product_name}</h3>
+                <h4>开年购书赢好礼</h4>
+            </div>
+            <div class="recommendationMain one">
+                <a href="{$lists.url}"><img src={$lists.pic_url}></img></a>
+            </div>
+        </div>
+        {/volist}
+
+    </div>
+    <div class="clear "></div>
+    <!--热门活动 -->
+
+
+    <div id="f1">
+        <!--热门搜索-->
+
+        <div class="am-container ">
+            <div class="shopTitle ">
+                <h4>热门书籍</h4>
+                <h3>每一部书籍都是文化的传承和发展</h3>
+                <div class="today-brands ">
+                    <a href="# ">水浒传</a>
+                    <a href="# ">三国演义</a>
+                    <a href="# ">红楼梦 </a>
+                    <a href="# ">我和我的祖国</a>
+                    <a href="# ">聊斋</a>
+                    <a href="# ">呼啸山庄</a>
+                </div>
+                <span class="more ">
+                    <a href="# ">更多热门<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
+                        </span>
+            </div>
+        </div>
+
+        <div class="am-g am-g-fixed floodFour">
+            <div class="am-u-sm-5 am-u-md-4 text-one list ">
+                <div class="word">
+                    <a class="outer" href="#"><span class="inner"><b class="text">读</b></span></a>
+                    <a class="outer" href="#"><span class="inner"><b class="text">文</b></span></a>
+                    <a class="outer" href="#"><span class="inner"><b class="text">学</b></span></a>
+                    <a class="outer" href="#"><span class="inner"><b class="text">知</b></span></a>
+                    <a class="outer" href="#"><span class="inner"><b class="text">名</b></span></a>
+                    <a class="outer" href="#"><span class="inner"><b class="text">著</b></span></a>
+                </div>
+                <a href="# ">
+                    <div class="outer-con ">
+                        <div class="title ">
+                            开抢啦！
+                        </div>
+                        <div class="sub-title ">
+                            热门图书五折起！！
+                        </div>
+                    </div>
+                    <img src="/static/images/act1.png " />
+                </a>
+                <div class="triangle-topright"></div>
+            </div>
+            {volist name="login" id="lists" empty="$empty"}
+            <div class="am-u-sm-3 am-u-md-2 text-three last big ">
+                <div class="outer-con ">
+                    <div class="title ">
+                        {$lists.product_name}
+                    </div>
+                    <div class="sub-title ">
+                        ￥{$lists.cost}/本
+                    </div>
+                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+                </div>
+                <a href={$lists.url}><img src={$lists.pic_url} /></a>
+            </div>
+            {/volist}
+        </div>
+        <div id="divcss5">{$login|raw}</div>
+        <div class="clear "></div>
+    </div>
+    {/block}

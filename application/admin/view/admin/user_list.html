@@ -1,0 +1,76 @@
+{extend name="/common/base" /}
+{block name="bady"}
+<style>
+    #divcss5{margin:0 auto;border:1px solid #f4fcff;width:600px;height:100px}
+    ul.pagination {display: inline-block;padding: 20px;margin: 0;text-align: center}
+    .pagination a{text-decoration: none;margin-right: 0px!important; text-align: center}
+    ul.pagination li {display: inline;align-content: center}
+    .disabled ,.pagination  .active, .pagination li a {color: black; float: left;padding: 8px 16px;text-decoration: none;transition: background-color .3s;border: 1px solid #ddd; margin: 0 4px;}
+    .pagination .active{background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    .disabled{background-color: rgba(236, 236, 236, 0.78);}
+    ul.pagination  a.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+</style>
+
+<section class="rt_wrap content mCustomScrollbar">
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">会员列表</h2>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>会员头像</th>
+                <th>会员昵称</th>
+                <th>手机号码</th>
+                <th>电子邮件</th>
+                <th>是否设置支付密码</th>
+                <th>会员等级</th>
+                <th>创建时间</th>
+                <th>最后修改时间</th>
+                <th>操作</th>
+            </tr>
+            {volist name="user_list" id="list"}
+            <tr>
+                <td class="center">{$list.id}</td>
+                <td class="center"><img src="/static/image/user/{$list.id}.jpg" width="50" height="50"/></td>
+                <td>{$list.name}</td>
+                <td class="center">{$list.iphone}</td>
+                <td class="center">{$list.email}</td>
+                {if $list.pay_pwd}
+                <td class="center"><a title="成功" class="link_icon">&#89;</a></td>
+                {else/}
+                <td class="center"><a title="否" class="link_icon">&#88;</a></td>
+                {/if}
+                <td class="center">普通会员</td>
+                <td class="center">
+                    <strong id="creat">{$list.creat_time}</strong>
+                </td>
+                <td class="center">
+                    <strong >{$list.update_time}</strong>
+                </td>
+                <td class="center">
+                    <a href="javascript:udown({$list.id})" title="关入小黑屋" class="link_icon">&#100;</a>
+                </td>
+                <script type="text/javascript">
+                    function udown(id) {
+                        var date={"id":id};
+                        url='/admin/admin/udown';
+                        var success=function(reponse){
+                            if(reponse==0){
+                                alert("没有关入小黑屋！！");
+                            }else {
+                                alert("关入小黑屋成功！！");
+                                history.go(0);
+                            }
+                        }
+                        $.post(url,date,success,"json");
+                    }
+                </script>
+            </tr>
+            {/volist}
+        </table>
+        <div id="divcss5">{$user_list|raw}</div>
+    </div>
+</section>
+{/block}

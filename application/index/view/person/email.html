@@ -1,0 +1,127 @@
+{extend name="/public/bases" /}
+{block name="bady"}
+<link href="/static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+<link href="/static/css/personal.css" rel="stylesheet" type="text/css">
+<link href="/static/css/stepstyle.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+<script src="/static/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+
+<b class="line"></b>
+<div class="center">
+    <div class="col-main">
+        <div class="main-wrap">
+
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">绑定邮箱</strong> / <small>Email</small></div>
+            </div>
+            <hr/>
+            <!--进度条-->
+            <div class="m-progress">
+                <div class="m-progress-list">
+							<span class="step-1 step">
+                                <em class="u-progress-stage-bg"></em>
+                                <i class="u-stage-icon-inner">1<em class="bg"></em></i>
+                                <p class="stage-name">验证邮箱</p>
+                            </span>
+                    <span class="step-2 step">
+                                <em class="u-progress-stage-bg"></em>
+                                <i class="u-stage-icon-inner">2<em class="bg"></em></i>
+                                <p class="stage-name">完成</p>
+                            </span>
+                    <span class="u-progress-placeholder"></span>
+                </div>
+                <div class="u-progress-bar total-steps-2">
+                    <div class="u-progress-bar-inner"></div>
+                </div>
+            </div>
+            <form class="am-form am-form-horizontal" method="post" action="/index/person/chagemail">
+                <div class="am-form-group">
+                    <label for="user-email" class="am-form-label">验证邮箱</label>
+                    <div class="am-form-content">
+                        <input name="chagemail" type="email" id="user-email" placeholder="请输入邮箱地址">
+                    </div>
+                </div>
+                <div class="am-form-group code">
+                    <label for="user-code" class="am-form-label">验证码</label>
+                    <div class="am-form-content">
+                        <input type="tel" id="user-code"  name="codes" placeholder="验证码">
+                    </div>
+                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
+                        <div class="am-btn am-btn-danger"><span id="dyMobileButton">验证码</span></div>
+                    </a>
+                </div>
+                <div class="info-btn">
+                    <div class="am-btn am-btn-danger">
+                        <input type="submit" class="am-btn am-btn-danger" value="保存修改">
+                    </div>
+                </div>
+
+            </form>
+
+            <script type="text/javascript">
+                function  sendMobileCode() {
+                    var times=document.getElementById('dyMobileButton');
+                    sendyzm(times);
+                }
+
+                function sendyzm(obj) {
+                    var email = document.getElementById('user-email').value;
+                    var result = isphonenum(email);
+                    if (result) {
+
+                        var url="/index/login/send";
+                        var date= {'email': email};
+                        var success=function(reponse){
+                            if(reponse!=0){
+                                alert("验证码发送成功");
+                            }else {
+                                alert("验证码发送失败");
+                            }
+                        }
+                        $.post(url,date,success,"json");
+                        setTime(obj);//开始倒计时
+                    }
+                }
+
+                var timess=document.getElementById('sendMobileCode');
+                var countdown = 30;
+                function setTime(obj) {
+                    if (countdown == 0) {
+                        timess.onclick=function () {
+                            sendMobileCode();
+                        };
+                        obj.innerText=("验证码");
+                        countdown = 30;//30秒过后button上的文字初始化,计时器初始化;
+                        return;
+                    } else {
+                        // timess.setAttribute('disabled', true);
+                        timess.onclick=function () {
+
+                        };
+                        obj.innerText=countdown;
+                        countdown--;
+                    }
+                    setTimeout(function () {
+                        setTime(obj)
+                    }, 1000) //每1000毫秒执行一次
+                }
+
+                //校验手机号是否合法
+                function isphonenum(num) {
+                    var phonenum = num;
+                    var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/;
+                    if (!reg.test(phonenum)) {
+                        alert('请输入有效的邮箱号码！');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
+            </script>
+
+        </div>
+        {/block}

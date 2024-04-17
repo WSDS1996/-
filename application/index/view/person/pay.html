@@ -1,0 +1,253 @@
+{extend name="/common/base" /}
+{block name="bady"}
+
+    <link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+
+    <link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/cartstyle.css" rel="stylesheet" type="text/css" />
+
+    <link href="/static/css/jsstyle.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="/static/js/address.js"></script>
+
+<div class="clear"></div>
+<div class="concent">
+    <!--地址 -->
+    <div class="paycont">
+        <div class="address">
+            <h3>确认收货地址 </h3>
+            <div class="control">
+                <div class="tc-btn createAddr theme-login am-btn am-btn-danger"><a href="/index/person/address">修改收货地址</a></div>
+            </div>
+            <div class="clear"></div>
+            <ul>
+
+                <div class="per-border"></div>
+                {volist name="pay" id="list"}
+                <li class="user-addresslist defaultAddr">
+
+                    <div class="address-left">
+                        <div class="user DefaultAddr">
+                            <span class="buy-address-detail">
+                                 <span class="buy-user">{$list.name}</span>
+                                <span class="buy-phone">{$list.phone}</span>
+										</span>
+                        </div>
+                        <div class="default-address DefaultAddr">
+                            <span class="buy-line-title buy-line-title-type">收货地址：</span>
+                            <span class="buy--address-detail">
+								   <span class="province">{$list.economize}</span>
+										<span class="city">{$list.city}</span>
+										<span class="dist">{$list.country}</span>
+										<span class="street">{$list.address}</span>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+                <div class="per-border"></div>
+
+            </ul>
+
+            <div class="clear"></div>
+        </div>
+        <!--物流 -->
+        <div class="logistics">
+            <h3>物流方式</h3>
+            <ul class="op_express_delivery_hot">
+                <li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom"><i class="c-gap-right" style="background-position:0px -180px"></i>顺丰<span></span></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+
+        <!--支付方式-->
+        <div class="logistics">
+            <h3>支付方式</h3>
+            <ul class="pay-list">
+                <li class="pay taobao"><img src="/static/images/zhifubao.jpg" />支付宝<span></span></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+
+        <!--订单 -->
+        <div class="concent">
+            <div id="payTable">
+                <h3>确认订单信息</h3>
+                <div class="cart-table-th">
+                    <div class="wp">
+
+                        <div class="th th-item">
+                            <div class="td-inner">商品信息</div>
+                        </div>
+                        <div class="th th-price">
+                            <div class="td-inner">单价</div>
+                        </div>
+                        <div class="th th-amount">
+                            <div class="td-inner">数量</div>
+                        </div>
+                        <div class="th th-sum">
+                            <div class="td-inner">金额</div>
+                        </div>
+                        <div class="th th-oplist">
+                            <div class="td-inner">配送方式</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clear"></div>
+                {volist name="pays" id="good"}
+                <tr class="item-list">
+                    <div class="bundle  bundle-last">
+
+                        <div class="bundle-main">
+                            <ul class="item-content clearfix">
+                                <div class="pay-phone">
+                                    <li class="td td-item">
+                                        <div class="item-pic">
+                                            <a href="#" class="J_MakePoint">
+                                                <img src={$good.pic_url} class="itempic J_ItemImg"></a>
+                                        </div>
+                                        <div class="item-info">
+                                            <div class="item-basic-info">
+                                                <a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">{$good.pic_desc}</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="td td-info">
+                                        <div class="item-props">
+                                            <span class="sku-line">优惠卷：暂无可用优惠卷</span>
+                                            <span class="sku-line">红包：暂无可用红包</span>
+                                        </div>
+                                    </li>
+                                    <li class="td td-price">
+                                        <div class="item-price price-promo-promo">
+                                            <div class="price-content">
+                                                <em class="J_Price price-now">{$good.cost}</em>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                                <li class="td td-amount">
+                                    <div class="amount-wrapper ">
+                                        <div class="item-amount ">
+                                            <span class="phone-title">购买数量</span>
+                                            <div class="sl">
+                                                <span class="text_box" name="" type="text" value="3" style="width:30px;">{$good.num}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="td td-sum">
+                                    <div class="td-inner">
+                                        <em tabindex="0" class="J_ItemSum number">{$good.num*$good.cost}</em>
+                                    </div>
+                                </li>
+                                <li class="td td-oplist">
+                                    <div class="td-inner">
+                                        <span class="phone-title">配送方式</span>
+                                        <div class="pay-logis">
+                                            快递<b class="sys_item_freprice">包邮</b>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="clear"></div>
+
+                        </div>
+                </tr>
+                {/volist}
+        </div>
+        <div class="clear"></div>
+        <div class="pay-total">
+            <!--留言-->
+            <div class="order-extra">
+
+            </div>
+            <!--优惠券 -->
+            <div class="buy-agio">
+                <li class="td td-coupon">
+
+                    <span class="coupon-title">优惠券</span>
+                    <select data-am-selected>
+                        <option value="b" selected>
+                            <div class="c-price">
+                                <strong></strong>
+                            </div>
+                            <div class="c-limit">
+                                【无可用优惠卷】
+                            </div>
+                        </option>
+                    </select>
+                </li>
+
+                <li class="td td-bonus">
+
+                    <span class="bonus-title">红包</span>
+                    <select data-am-selected>
+                        <option value="a">
+                            <div class="item-info">
+                                <span>无可用红包</span>
+                            </div>
+                            <div class="item-remainderprice">
+                                <span></span><span></span>
+                            </div>
+                        </option>
+                    </select>
+
+                </li>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--含运费小计 -->
+        <div class="buy-point-discharge ">
+            <p class="price g_price ">
+                合计（含运费） <span>¥</span><em class="pay-sum">{$spend}</em>
+            </p>
+        </div>
+
+        <!--信息 -->
+        <div class="order-go clearfix">
+            <div class="pay-confirm clearfix">
+                <div class="box">
+                    <div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+                        <span class="price g_price ">
+                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">{$spend}</em>
+											</span>
+                    </div>
+
+                    <div id="holyshit268" class="pay-address">
+                        {volist name="pay" id="list"}
+                        <p class="buy-footer-address">
+                            <span class="buy-line-title buy-line-title-type">寄送至：</span>
+                            <span class="buy--address-detail">
+								   <span class="province">{$list.economize}</span>
+												<span class="city">{$list.city}</span>
+												<span class="dist">{$list.country}</span>
+												<span class="street">{$list.address}</span>
+												</span>
+                            </span>
+
+                        </p>
+                        <p class="buy-footer-address">
+                            <span class="buy-line-title">收货人：</span>
+                            <span class="buy-address-detail">
+                                         <span class="buy-user">{$list.name} </span>
+												<span class="buy-phone">{$list.phone}</span>
+												</span>
+                        </p>
+                        {/volist}
+                    </div>
+                </div>
+
+                <div id="holyshit269" class="submitOrder">
+                    <div class="go-btn-wrap">
+                        <a id="J_Go" href="/index/shopcart/pay_get?cost={$spend}" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+{/block}

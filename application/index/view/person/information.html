@@ -1,0 +1,137 @@
+{extend name="/public/bases" /}
+{block name="bady"}
+<link href="/static/css/personal.css" rel="stylesheet" type="text/css">
+<link href="/static/css/infstyle.css" rel="stylesheet" type="text/css">
+<script src="/static/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+<script src="/static/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/static/js/sweetalert.css">
+<script type="text/javascript" src="/static/js/sweetalert-dev.js"></script>
+
+<b class="line"></b>
+<div class="center">
+    <div class="col-main">
+        <div class="main-wrap">
+            <div class="user-info">
+                <!--标题 -->
+                {volist name="information" id="list" offset="0" length="1"}
+                <div class="am-cf am-padding">
+                    <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+                </div>
+                <hr/>
+
+                <!--头像 -->
+                <div class="user-infoPic">
+
+                    <div class="filePic">
+                        <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+                        <img class="am-circle am-img-thumbnail" src="/static/images/getAvatar.do.jpg" alt="" />
+                    </div>
+
+                    <p class="am-form-help">头像</p>
+
+                    <div class="info-m">
+                        <div><b>用户名：<i>{$list.name}</i></b></div>
+                        <div class="u-level">
+									<span class="rank r2">
+							             <s class="vip1"></s><a class="classes" href="">铜牌会员</a>
+						            </span>
+                        </div>
+                        <div class="u-safety">
+                            <a href="safety.html">
+                                账户安全
+                                <span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">60分</i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--个人信息 -->
+                <div class="info-main">
+                    <form class="am-form am-form-horizontal" method="post" action="/index/person/changeimfor">
+
+                        <div class="am-form-group">
+                            <label for="user-name2" class="am-form-label">昵称/姓名</label>
+                            <div class="am-form-content">
+                                {if $list.name==''}
+                                <input type="text" id="user-name22" placeholder="昵称只能修改一次"  >
+                                {else/}
+                                <p>{$list.name}</p>
+                                {/if}
+                            </div>
+                        </div>
+
+
+                        <div class="am-form-group">
+                            <label for="user-phone" class="am-form-label">电话</label>
+                            <div class="am-form-content">
+                                {if $list.iphone==''}
+                                <p>请到<a href="safety.html">安全设置绑定手机号</a></p>
+                                {else/}
+                                <p>{$list.iphone}</p>
+                                {/if}
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-email" class="am-form-label">电子邮件</label>
+                            <div class="am-form-content">
+                                {if $list.email==''}
+                                <input id="user-email22" placeholder="Email" type="email">
+                                {else/}
+                                <p>{$list.email}</p>
+                                {/if}
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-email" class="am-form-label">注册时间</label>
+                            <div class="am-form-content">
+                                <p>{$list.creat_time|date="Y-m-d H:i:s"}</p>
+                            </div>
+                        </div>
+                        <div class="info-btn">
+                            <div class="am-btn am-btn-danger"><a  id="change" href="javascript:change()">保存修改</a></div>
+                        </div>
+
+                    </form>
+
+                    <script>
+                        var names=document.getElementById('user-name22')
+                        names.onblur= function check() {
+                            var name=document.getElementById('user-name22').value;
+                            var url='/index/person/check';
+                            var date={"name":name};
+                            var success=function(reponse){
+                                if(reponse==1){
+                                    swal("用户名重复");
+                                }else if (reponse==-1){
+                                    swal("用户名不能为空");
+                                }else {
+                                    swal("用户名可以用哦");
+                                }
+                            }
+                            $.post(url,date,success,"json");
+                        }
+
+                      function change() {
+
+                          var name=document.getElementById('user-name22').value;
+                          var id={$Think.session.user_id};
+                          var url='/index/person/changeimfor';
+                          var date={"id":id,"name":name};
+                          var success=function(reponse){
+                              if(reponse==1){
+                                  swal("修改成功");
+                              }else {
+                                  swal("修改失败");
+                              }
+                          }
+                          $.post(url,date,success,"json");
+                      }
+
+                    </script>
+
+                </div>
+                {/volist}
+            </div>
+
+        </div>
+        {/block}

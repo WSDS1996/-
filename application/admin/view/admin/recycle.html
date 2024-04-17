@@ -1,0 +1,74 @@
+{extend name="/common/base" /}
+{block name="bady"}
+<style>
+    #divcss5{margin:0 auto;border:1px solid #f4fcff;width:300px;height:100px}
+    ul.pagination {display: inline-block;padding: 20px;margin: 0;text-align: center}
+    .pagination a{text-decoration: none;margin-right: 0px!important; text-align: center}
+    ul.pagination li {display: inline;align-content: center}
+    .disabled ,.pagination  .active, .pagination li a {color: black; float: left;padding: 8px 16px;text-decoration: none;transition: background-color .3s;border: 1px solid #ddd; margin: 0 4px;}
+    .pagination .active{background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    .disabled{background-color: rgba(236, 236, 236, 0.78);}
+    ul.pagination  a.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+</style>
+
+<section class="rt_wrap content mCustomScrollbar">
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">商品列表示例</h2>
+            <a href="/admin/admin/product_detail" class="fr top_rt_btn add_icon">添加商品</a>
+        </div>
+        <table class="table">
+            <tr>
+                <th>缩略图</th>
+                <th>产品名称</th>
+                <th>货号</th>
+                <th>标价</th>
+                <th>售价</th>
+                <th>分类</th>
+                <th>开启</th>
+                <th>热销</th>
+                <th>库存</th>
+                <th>操作</th>
+            </tr>
+            {volist name="recycle" id="list"}
+            <tr>
+                <td class="center"><img src={$list.pic_url} width="50" height="50"/></td>
+                <td class="center">{$list.product_name}</td>
+                <td class="center">{$list.product_id}</td>
+                <td class="center"><strong class="rmb_icon">{$list.price}</strong></td>
+                <td class="center"><strong class="rmb_icon">{$list.cost}</strong></td>
+                <td class="center"><strong >{$list.category_name}</strong></td>
+                {if $list.state}
+                <td class="center"><a title="是" class="link_icon">&#89;</a></td>
+                {else/}
+                <td class="center"><a title="否" class="link_icon">&#88;</a></td>
+                {/if}
+                <td class="center"><a title="是" class="link_icon">&#89;</a></td>
+                <td class="center">{$list.stock}</td>
+                <td class="center">
+                    <a href="product_detail.html" title="编辑" class="link_icon">&#101;</a>
+                    <a href="javascript:ups({$list.product_id})" title="上架" class="link_icon">&#100;</a>
+                </td>
+                <script type="text/javascript">
+                    function ups(id) {
+                        var date={"product_id":id};
+                        url='/admin/admin/ups';
+                        var success=function(reponse){
+                            if(reponse==0){
+                                alert("上架失败");
+                            }else {
+                                alert("上架成功");
+                                history.go(0);
+                            }
+                        }
+                        $.post(url,date,success,"json");
+                    }
+                </script>
+            </tr>
+            {/volist}
+        </table>
+        <div id="divcss5">{$recycle|raw}</div>
+    </div>
+</section>
+{/block}

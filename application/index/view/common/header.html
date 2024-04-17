@@ -1,0 +1,101 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <style>
+
+        /*分页*/
+
+        .pagination {}
+
+        .pagination li {display: inline-block;margin-right: -1px;padding: 5px;border: 1px solid #e2e2e2;min-width: 20px;text-align: center;}
+
+        .pagination li.active {background: #009688;color: #fff;border: 1px solid #009688;}
+
+        .pagination li a {display: block;text-align: center;}
+
+        #divcss5{margin:0 auto;width:300px;height:30px}
+
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>首页</title>
+
+    <link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+    <link href="/static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+
+    <link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />
+
+    <link href="/static/css/hmstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/skin.css" rel="stylesheet" type="text/css" />
+    <script src="/static/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="/static/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+
+</head>
+
+<body>
+<div class="hmtop">
+    <!--顶部导航条 -->
+    <div class="am-container header">
+        <ul class="message-l">
+            <div class="topMessage">
+                <div class="menu-hd" id="charge">
+                    {if $Think.session.user_id}
+                    <a href="" target="_top" class="h" >欢迎登录铃铛图书网</a>
+                    {else/}
+                    <a href="/index/index/index" target="_top" class="h">亲，请登录</a>
+                    <a href="/index/register/register" target="_top">免费注册</a>
+                    {/if}
+                </div>
+            </div>
+        </ul>
+        <ul class="message-r">
+            <div class="topMessage my-shangcheng">
+                <div class="menu-hd MyShangcheng">
+                    {if $Think.session.user_id}
+                    <a href="/index/person/person" target="_top"><i class="am-icon-user am-icon-fw"></i>{$Think.session.user_name}</a>
+                    {else/}
+                    <a href="/index/person/person" target="_top"><i class="am-icon-user am-icon-fw"></i>会员中心</a>
+                    {/if}
+                </div>
+            </div>
+            <div class="topMessage home">
+                <div class="menu-hd"><a href="/index/person/order" target="_top" class="h">我的御书房</a></div>
+            </div>
+            <div class="topMessage mini-cart">
+                <div class="menu-hd">
+                    <a id="mc-menu-hd" href="/index/shopcart/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a>
+                </div>
+            </div>
+            <div class="topMessage favorite">
+                <div class="menu-hd">
+                    {if $Think.session.user_id}
+                    <a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>积分兑换</span></a>
+                    <a href="/index/login/clear" target="_top"><i class=""></i>注销</a>
+                    {else/}
+                    <a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>积分兑换</span></a>
+                    {/if}
+                </div>
+        </ul>
+    </div>
+
+    <!--悬浮搜索框-->
+
+    <div class="nav white">
+        <div class="logo"><a href="/index/index/index"><img src="/static/images/logo.png" /></a> </div>
+        <div class="logoBig">
+            <li><a href="/index/login/login"><img src="/static/images/logobig.png" /></a></li>
+        </div>
+
+        <div class="search-bar pr">
+            <a name="index_none_header_sysc" href="#"></a>
+            <form action="/index/introduction/search" method="post">
+                <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+                <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+            </form>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>

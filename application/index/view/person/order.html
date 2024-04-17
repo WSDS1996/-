@@ -1,0 +1,152 @@
+
+{extend name="/public/bases" /}
+{block name="bady"}
+
+<style>
+    #divcss5{margin:0 auto;border:1px solid #000;width:300px;height:100px}
+    ul.pagination {display: inline-block;padding: 20px;margin: 0;text-align: center}
+    .pagination a{text-decoration: none;margin-right: 0px!important; text-align: center}
+    ul.pagination li {display: inline;align-content: center}
+    .disabled ,.pagination  .active, .pagination li a {color: black; float: left;padding: 8px 16px;text-decoration: none;transition: background-color .3s;border: 1px solid #ddd; margin: 0 4px;}
+    .pagination .active{background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    .disabled{background-color: rgba(236, 236, 236, 0.78);}
+    ul.pagination  a.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+</style>
+<link href="/static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+<link href="/static/css/personal.css" rel="stylesheet" type="text/css">
+<link href="/static/css/orstyle.css" rel="stylesheet" type="text/css">
+
+<script src="/static/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+<script src="/static/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+
+
+<b class="line"></b>
+<div class="center">
+    <div class="col-main">
+        <div class="main-wrap">
+
+            <div class="user-order">
+
+                <!--标题 -->
+                <div class="am-cf am-padding">
+                    <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">订单管理</strong> / <small>Order</small></div>
+                </div>
+                <hr/>
+
+                <div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
+
+                    <ul class="am-avg-sm-5 am-tabs-nav am-nav am-nav-tabs">
+                        <li class="am-active"><a href="#tab1">所有订单</a></li>
+                    </ul>
+
+                    <div class="am-tabs-bd">
+                        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                            <div class="order-top">
+                                <div class="th th-item">
+                                    <td class="td-inner">商品</td>
+                                </div>
+                                <div class="th th-price">
+                                    <td class="td-inner">单价</td>
+                                </div>
+                                <div class="th th-number">
+                                    <td class="td-inner">数量</td>
+                                </div>
+                                <div class="th th-operation">
+                                    <td class="td-inner">商品操作</td>
+                                </div>
+                                <div class="th th-amount">
+                                    <td class="td-inner">合计</td>
+                                </div>
+                                <div class="th th-status">
+                                    <td class="td-inner">交易状态</td>
+                                </div>
+                                <div class="th th-change">
+                                    <td class="td-inner">交易操作</td>
+                                </div>
+                            </div>
+
+                            <div class="order-main">
+                                <div class="order-list">
+
+                                    <!--交易成功-->
+                                    {volist name="order" id="list"}
+                                    <div class="order-status5">
+                                        <div class="order-title">
+                                            <div class="dd-num">订单编号：<a href="javascript:;">{$list.order_id}</a></div>
+                                            <span>成交时间：{}</span>
+                                            <!--    <em>店铺：小桔灯</em>-->
+                                        </div>
+                                        <div class="order-content">
+                                            <div class="order-left">
+                                                <ul class="item-list">
+                                                    <li class="td td-item">
+                                                        <div class="item-pic">
+                                                            <a href="#" class="J_MakePoint">
+                                                                <img src={$list.pic_url} class="itempic J_ItemImg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-info">
+                                                            <div class="item-basic-info">
+                                                                <a href="#">
+                                                                    <p>{$list.pic_desc}</p>
+                                                                    <p class="info-little">优惠卷：暂无可用优惠卷
+                                                                        <br/>红包：暂无可用红包 </p>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-price">
+                                                        <div class="item-price">
+                                                            {$list.cost }
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-number">
+                                                        <div class="item-number">
+                                                            <span>×</span>{$list.num}
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-operation">
+                                                        <div class="item-operation">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="order-right">
+                                                <li class="td td-amount">
+                                                    <div class="item-amount">
+                                                        合计：{$list.cost*$list.num}
+                                                        <p>全国<span>包邮</span></p>
+                                                    </div>
+                                                </li>
+                                                <div class="move-right">
+                                                    <li class="td td-status">
+                                                        <div class="item-status">
+                                                            <p class="Mystatus">交易成功</p>
+                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-change">
+                                                        <div class="am-btn am-btn-danger anniu">
+                                                            <a href="/index/shopcart/dorder?order_id={$list.order_id}&product_id={$list.product_id}">无理由退货</a></div>
+                                                    </li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/volist}
+
+                                </div>
+                                <div id="divcss5s" >{$order|raw}</div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {/block}
